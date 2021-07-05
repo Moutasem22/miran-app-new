@@ -1,0 +1,122 @@
+.ant-input,
+// .ant-input-password,
+.ant-select-selector,
+.ant-picker-range,
+.ant-input-number,
+.ant-picker {
+	width: 100%;
+	height: 35px;
+	border: solid 1px #dadce0 !important;
+	border-radius: 6px !important;
+	background-color: transparent !important;
+	padding: 0 12px !important;
+	font-size: 15px;
+	color: #242424;
+}
+.ant-picker {
+	border-radius: 6px;
+	min-width: 180px;
+}
+
+.ant-select-single.ant-select-show-arrow .ant-select-selection-item,
+.ant-select-single.ant-select-show-arrow .ant-select-selection-placeholder {
+	display: flex;
+	align-items: center;
+}
+
+.ant-select-selector {
+	height: auto;
+	min-height: 35px;
+}
+
+.ant-radio-wrapper {
+	display: inline-flex;
+	align-items: center;
+}
+.PhoneInput {
+	.PhoneInputInput {
+		width: 100%;
+		height: 45px;
+		border: solid 1px #dadce0 !important;
+		border-radius: 6px !important;
+		background-color: transparent !important;
+		padding: 0 12px !important;
+		font-size: 15px;
+		color: #242424;
+	}
+}
+
+.drawer-wrapper {
+	.ant-drawer-title {
+		font-size: 22px;
+	}
+	.ant-drawer-body {
+		padding: 0;
+		background-color: #eff3f6;
+		.drawer-body-wrapper {
+			padding: 50px 30px;
+			@include mq('tablet') {
+				padding: 50px 15px; 
+			}
+		}
+	}
+
+	.customer-header-info {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 30px 25px;
+		background-color: #fff;
+
+		@include mq('tablet') {
+			padding: 30px 15px;
+			flex-direction: column;
+
+			h2 {
+				margin-bottom: 15px;
+			}
+		}
+	}
+
+	.drawer-list-view {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 30px 40px;
+		background-color: #fff;
+		border-radius: 0.5rem;
+		box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;
+		margin: 40px 0;
+		// margin-bottom: 40px;
+		padding: 30px 40px;
+		.list-view-holder {
+			.list-view--label {
+				color: rgba(113, 128, 150, 0.9);
+				margin-bottom: 10px;
+				font-size: 17px;
+			}
+			.list-view--value {
+				font-size: 17px;
+				color: #000;
+				padding-bottom: 5px;
+				border-bottom: 1px solid rgba(113, 128, 150, 0.9);
+			}
+		}
+
+		@include mq('tablet') {
+			grid-template-columns: auto;
+			padding: 30px 25px;
+		}
+	}
+}
+
+.large-select-holder {
+	.ant-select-selection-item {
+		font-size: 28px;
+	}
+}
+
+.ant-form-item-has-error {
+	input {
+		border-color: #ff4d4f !important;
+	}
+}

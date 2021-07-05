@@ -1,0 +1,40 @@
+.add__record--modal {
+    width: 90% !important;
+    max-width: 877px;
+    border-radius: 7px !important;
+    overflow: hidden;
+
+    @include mq('tablet') {
+        width: 95% !important;
+    }
+
+    .ant-modal-title {
+        font-size: 19px;
+    }
+
+    .ant-form-item {
+        row-gap: 0px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+
+        >div {
+            width: 100%;
+            text-align: left;
+            max-width: 90%;
+        }
+    }
+
+    .add__form--footer {
+        display: flex;
+        justify-content: flex-end;
+        padding-top: 10px;
+        margin-top: 10px;
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+
+        button {
+            margin: 0 5px;
+        }
+    }
+}

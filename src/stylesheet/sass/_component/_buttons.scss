@@ -1,0 +1,193 @@
+%btn-style {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	// font-family: URWDIN;
+	padding: 0 20px;
+	min-height: 50px !important;
+	width: 200px;
+	min-width: 180px;
+	margin: 0 auto;
+	font-size: 16px;
+	font-weight: normal;
+	border-radius: 12px;
+	transition: 0.3s;
+	cursor: pointer;
+	text-transform: capitalize;
+	&:disabled {
+		background-color: #e5e6e3 !important;
+		pointer-events: none;
+	}
+	&.sm-btn {
+		min-height: 30px !important;
+		padding: 0 10px;
+		font-size: 12px;
+	}
+	&.md-btn {
+		padding: 0 16px;
+		min-height: 32px !important;
+		font-size: 15px;
+	}
+	&.rounded {
+		border-radius: 16px !important;
+	}
+	&.lg-btn {
+		min-height: 55px !important;
+		font-weight: bold;
+		padding: 0 30px !important;
+		width: 190px;
+		@include mq('phablet') {
+			font-size: 16px;
+			width: 140px;
+		}
+	}
+	&.xlg-btn {
+		width: 455px !important;
+		@include mq('tablet') {
+			width: auto !important;
+		}
+	}
+	&.add-btn {
+		i {
+			margin: 0 10px;
+			font-size: 16px;
+		}
+	}
+	&.loading {
+		position: relative;
+		cursor: default;
+		text-shadow: none !important;
+		color: transparent !important;
+		opacity: 0.6;
+		pointer-events: none;
+		transition: all 0s linear, opacity 0.1s ease;
+		&::after {
+			position: absolute;
+			content: '';
+			top: 50%;
+			right: 50%;
+			margin: -0.64285714em -0.64285714em 0 0;
+			width: 1.28571429em;
+			height: 1.28571429em;
+			animation: button-spin 0.6s linear;
+			animation-iteration-count: infinite;
+			border-radius: 500rem;
+			border-color: #fff transparent transparent;
+			border-style: solid;
+			border-width: 0.2em;
+			box-shadow: 0 0 0 1px transparent;
+		}
+		&::before {
+			position: absolute;
+			content: '';
+			top: 50%;
+			right: 50%;
+			margin: -0.64285714em -0.64285714em 0 0;
+			width: 1.28571429em;
+			height: 1.28571429em;
+			border-radius: 500rem;
+			border: 0.2em solid rgba(0, 0, 0, 0.15);
+		}
+	}
+	@include mq('phablet') {
+		padding: 0 12px;
+		font-size: 14px;
+		white-space: nowrap;
+		min-height: 40px !important;
+		width: 170px;
+		min-width: 170px;
+	}
+}
+
+$btn-list: (
+	(primary, $primary, $white, false, true),
+	(secondary, $secondary, $white, false, false),
+	(light, $white, $black, false, false),
+	(warn, $warn, $white, false, true),
+	// (grayscale, $third-color, $white, true, false)
+);
+
+@each $btn-name, $bg-color, $color, $has-hover, $has-outline in $btn-list {
+	.#{$btn-name}-fill {
+		@extend %btn-style;
+		background-color: $bg-color;
+		color: $color;
+		@if $has-hover {
+			&:hover {
+				background-color: $color;
+				color: $bg-color;
+				border: 1px solid $bg-color;
+			}
+		} @else {
+			&:hover,
+			&:focus {
+				background-color: $bg-color;
+				color: $color;
+			}
+		}
+	}
+	@if $has-outline {
+		.#{$btn-name}-outline {
+			@extend %btn-style;
+			background-color: #fff;
+			color: $bg-color;
+			border: 1px solid $bg-color;
+			&:hover {
+				color: #fff;
+				background-color: $bg-color;
+			}
+		}
+	}
+}
+
+%link-style {
+	font-size: 16px;
+	font-weight: bold;
+	color: #ffffff !important;
+	text-transform: capitalize;
+	text-decoration: underline !important;
+	&.lg-link {
+		font-size: 20px;
+	}
+	@include mq('tablet') {
+		font-size: 14.5px;
+		&.lg-link {
+			font-size: 18px;
+		}
+	}
+}
+
+.primary-link {
+	@extend %link-style;
+	color: $primary !important;
+}
+.secondary-link {
+	@extend %link-style;
+	color: $secondary !important;
+}
+
+.light-link {
+	@extend %link-style;
+}
+
+.primary__btn {
+	background-color: #1e4844;
+}
+
+.ant-btn-lg {
+	@include mq('tablet') {
+		font-size: 12px;
+	}
+}
+
+.ant-btn,
+.ant-btn-lg {
+	background-color: $primary;
+	border-color: $primary;
+
+	&:hover, &:active {
+		background-color: $primary;
+		border-color: $primary;
+	}
+}
