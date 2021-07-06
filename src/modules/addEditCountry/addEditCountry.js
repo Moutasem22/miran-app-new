@@ -87,7 +87,7 @@ class AddItem extends Component {
         return (
             <Modal title="Basic Modal" className="add__record--modal"
                 footer={null}
-                title="Add New Pets"
+                title="Country"
                 visible={true}
                 onOk={() => this.props.closeModal()}
                 onCancel={() => this.props.closeModal()}>
