@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { Input, Button, Col, Row, Form, Upload, message } from "antd";
 import Modal from "antd/lib/modal/Modal";
 import { LoadingOutlined, PlusOutlined } from "@ant-design/icons"
+import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
+import MapContainer from '../../component/mapContainer/mapContainer';
 
 const layout = {
     labelCol: { span: 8, },
@@ -75,6 +77,7 @@ class AddItem extends Component {
 
     render() {
         const { imageUrl, loading } = this.state;
+        const { latLng } = this.props;
         const uploadButton = (
             <div>
                 {loading ? <LoadingOutlined /> : <PlusOutlined />}
@@ -109,10 +112,11 @@ class AddItem extends Component {
                         </Col>
 
                         <Col sm={24} md={12} xs={{ span: 24 }}>
-                            <Form.Item name={'population'} label={"Population"} rules={[{ required: true, whitespace: true }]}>
+                            <Form.Item name={'population'} label={"Population"} rules={[{ required: true, }]}>
                                 <Input type="number" placeholder={"Population"} />
                             </Form.Item>
                         </Col>
+
                         <Col sm={24} md={12} xs={{ span: 24 }}>
                             <Form.Item label={"Country flag"} rules={[{ required: true, whitespace: true }]}>
                                 <Upload
@@ -128,6 +132,13 @@ class AddItem extends Component {
                                 </Upload>
                             </Form.Item>
                         </Col>
+
+                        <Col sm={24} md={24} xs={{ span: 24 }}>
+                            <div style={{ height: 300, marginBottom: 20 }}>
+                                <MapContainer latLng={latLng} />
+
+                            </div>
+                        </Col>
                     </Row>
 
                     <div className="add__form--footer">
@@ -141,4 +152,8 @@ class AddItem extends Component {
         )
     }
 }
+
+// export default GoogleApiWrapper({
+//     apiKey: 'FCBajLv2GNYOY238vDMWUfeacGIYfo3CkETXPOQXlI8'
+// })(AddItem);
 export default AddItem;

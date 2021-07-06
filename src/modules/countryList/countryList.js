@@ -11,6 +11,7 @@ const CountyList = (props) => {
     const [isEdit, setIsEdit] = useState(false);
     const [rowIndex, setRowIndex] = useState(null);
     const [imgSrc, setImgSrc] = useState(null);
+    const [latLngState, setLatLng] = useState([]);
     const modalRef = useRef(null);
 
     const countries = useSelector((state) => state.CountyList.countries)
@@ -50,14 +51,19 @@ const CountyList = (props) => {
         setIsEdit(true)
         setImgSrc(values.flag)
         setRowIndex(rowIndex)
+        setLatLng(values.latlng);
+
         setTimeout(() => {
-            modalRef.current.formRef.current.setFieldsValue({
-                name: values.name,
-                capital: values.capital,
-                region: values.region,
-                population: values.population,
-            })
-        }, 500)
+            console.log({ values })
+            if (modalRef) {
+                modalRef.current.formRef.current.setFieldsValue({
+                    name: values.name,
+                    population: values.population,
+                    capital: values.capital,
+                    region: values.region,
+                })
+            }
+        }, 1000)
 
     }
 
@@ -72,10 +78,10 @@ const CountyList = (props) => {
                 </div>
             </div>
             <div className="site-layout-background section-indent-wrapper" style={{ padding: '24px 24px 0', height: 'calc(100vh - 110px)', overflow: 'auto', }}>
-                {isModalVisible && <AddEditCountry imgSrc={imgSrc} ref={modalRef} addRecord={(values, imgUrl) => { addRecord(values, imgUrl) }} closeModal={() => setModalVisible(false)} />}
+                {isModalVisible && <AddEditCountry latLng={latLngState} imgSrc={imgSrc} ref={modalRef} addRecord={(values, imgUrl) => { addRecord(values, imgUrl) }} closeModal={() => setModalVisible(false)} />}
 
                 <Table
-                    className="table-roles-wrapper app-table-wrapper" scroll={{ y: 'calc(100vh - 275px)' }} 
+                    className="table-roles-wrapper app-table-wrapper" scroll={{ y: 'calc(100vh - 275px)' }}
                     columns={[
                         {
                             title: `Country name`,
@@ -102,6 +108,22 @@ const CountyList = (props) => {
                             title: `Population`,
                             dataIndex: 'population',
                         },
+                        {
+                            title: `Latitude & Longitude`,
+                            dataIndex: 'latlng',
+                            render: latlng => { 
+                                return (
+                                    <p>{latlng ? latlng.length > 0 ?
+                                        <>
+                                            <span> {latlng[0]} </span> -
+                                            <span> {latlng[1]} </span>
+                                        </>
+                                        : null : null}
+                                    </p>
+                                )
+                            },
+
+                        },
                     ]}
                     onRow={(record, rowIndex) => {
                         return {
@@ -116,10 +138,4 @@ const CountyList = (props) => {
     )
 }
 
-// const mapStateToProps = (state) => {
-//     return {
-//         currentResource: state.common.currentResource,
-//         projectActiveItem: state.common.projectActiveItem
-//     }
-// }connect(mapStateToProps)(
 export default CountyList

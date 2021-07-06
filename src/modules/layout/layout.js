@@ -20,8 +20,8 @@ class MainLayout extends React.Component {
         return (
             <Layout style={{ minHeight: '100vh' }}>
                 <Sider trigger={null} collapsible collapsed={this.state.collapsed}>
-                    <div className="logo">
-                        <img src="" alt="Logo" />
+                    <div className="logo" style={{ height: '60px', display: 'flex', alignItems: 'center', fontSize: '16px', color: '#fff', padding: '0 15px' }}>
+                        <p>Logo</p>
                     </div>
                     <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
                         <Menu.Item key="1" icon={<UserOutlined />}>nav 1</Menu.Item>
@@ -31,7 +31,8 @@ class MainLayout extends React.Component {
                 </Sider>
                 <Layout className="site-layout">
                     <Header className="site-layout-background" style={{ padding: 0 }}>
-                        {this.state.collapsed ? <MenuUnfoldOutlined className='trigger' onClick={this.toggle} /> : <MenuFoldOutlined onClick={this.toggle} className='trigger' />}
+                        {this.state.collapsed ? <MenuUnfoldOutlined style={{ color: '#fff', fontSize: '18px' }} className='trigger' onClick={this.toggle} /> :
+                            <MenuFoldOutlined style={{ color: '#fff', fontSize: '18px' }} onClick={this.toggle} className='trigger' />}
                     </Header>
                     <Content className="site-layout-background"
                     >
