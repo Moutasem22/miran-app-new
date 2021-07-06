@@ -15,7 +15,6 @@ export const countrySlice = createSlice({
         editToList: (state, action) => {
             const { body, rowIndex } = action.payload
             state.countries.splice(rowIndex, 1, body);
-            console.log('action.payload', action)
         },
     },
 })

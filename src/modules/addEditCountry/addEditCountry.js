@@ -91,7 +91,7 @@ class AddItem extends Component {
                 visible={true}
                 onOk={() => this.props.closeModal()}
                 onCancel={() => this.props.closeModal()}>
-                <Form ref={this.formRef} className="add__record--form" {...layout} name="nest-messages" onFinish={(values) => console.log(values)} validateMessages={validateMessages}>
+                <Form ref={this.formRef} className="add__record--form" {...layout} name="nest-messages" onFinish={(values) => {}} validateMessages={validateMessages}>
                     <Row gutter={16}>
                         <Col sm={24} md={12} xs={{ span: 24 }}>
                             <Form.Item name={'name'} label={"Name"} rules={[{ required: true, whitespace: true }]}>

@@ -54,7 +54,6 @@ const CountyList = (props) => {
         setLatLng(values.latlng);
 
         setTimeout(() => {
-            console.log({ values })
             if (modalRef) {
                 modalRef.current.formRef.current.setFieldsValue({
                     name: values.name,
